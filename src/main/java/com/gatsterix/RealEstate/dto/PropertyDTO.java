@@ -1,6 +1,5 @@
 package com.gatsterix.RealEstate.dto;
 
-import com.gatsterix.RealEstate.entity.ImageProperty;
 import com.gatsterix.RealEstate.entity.PropertyInformation;
 import com.gatsterix.RealEstate.entity.PropertyLocation;
 import com.gatsterix.RealEstate.entity.PropertyOwnerDetails;
@@ -19,10 +18,10 @@ public class PropertyDTO {
     private Double propertyPrice;
     private Float propertyArea;
     private Integer propertyRooms;
-    private List<ImageProperty> images;
+    private List<byte []> images;
     private PropertyInformation propertyInformation;
-    private PropertyLocation propertyLocation;
-    private PropertyOwnerDetails propertyOwnerDetails;
+    private PropertyLocationDTO propertyLocation;
+    private PropertyOwnerDetailsDTO propertyOwnerDetails;
 
 
 }
