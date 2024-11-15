@@ -11,5 +11,6 @@ public class PropertyOwnerDetailsDTO {
     private String fullName;
     private String emailAddress;
     private Long phoneNUmber;
-    private Property property;
+  //  private Property property;
+
 }

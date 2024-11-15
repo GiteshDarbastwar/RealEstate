@@ -1,6 +1,5 @@
 package com.gatsterix.RealEstate.controller;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gatsterix.RealEstate.dto.PropertyDTO;
 import com.gatsterix.RealEstate.interfaces.IProperty;
@@ -19,7 +18,6 @@ public class propertyController {
 
     @Autowired
     private IProperty iproperty;
-
 
 
 //    @PostMapping("/Add")
@@ -46,7 +44,6 @@ public class propertyController {
             ObjectMapper objectMapper = new ObjectMapper();
             PropertyDTO propertyDTO = objectMapper.readValue(propertyDTOString, PropertyDTO.class);
 
-
             PropertyDTO savedProperty = iproperty.saveProperty(propertyDTO, multipartFile);
             Response response = new Response("Property Added Successfully", savedProperty, false);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -55,7 +52,5 @@ public class propertyController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
     }
-
-
 
 }

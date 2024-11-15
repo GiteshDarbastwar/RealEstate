@@ -13,5 +13,6 @@ public class PropertyInformationDTO {
     private Integer propertyBedRooms;
     private Integer propertyBathRooms;
     private String propertyOtherFeatures;
-    private Property property;
+
+   // private Property property;
 }

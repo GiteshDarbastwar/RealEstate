@@ -12,5 +12,7 @@ public class PropertyLocationDTO {
     private String propertyCityName;
     private String propertyState;
     private Integer propertyPinCode;
-    private Property property;
+
+   // private Property property;
+
 }

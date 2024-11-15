@@ -18,10 +18,11 @@ public class PropertyDTO {
     private Double propertyPrice;
     private Float propertyArea;
     private Integer propertyRooms;
+
     private List<byte []> images;
     private PropertyInformation propertyInformation;
-    private PropertyLocationDTO propertyLocation;
-    private PropertyOwnerDetailsDTO propertyOwnerDetails;
+    private PropertyLocation propertyLocation;
+    private PropertyOwnerDetails propertyOwnerDetails;
 
 
 }

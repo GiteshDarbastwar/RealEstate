@@ -21,10 +21,13 @@ public class PropertyService implements IProperty {
 
     @Autowired
     private PropertyRepository propertyRepository;
+
     @Autowired
     private PropertyInformationRepository propertyInformationRepository;
+
     @Autowired
     private PropertyOwnerDetailsRepository propertyOwnerDetailsRepository;
+
     @Autowired
     private PropertyLocationRepository propertyLocationRepository;
 
@@ -46,6 +49,7 @@ public class PropertyService implements IProperty {
 //        PropertyInformation propertyInformation = property.getPropertyInformation();
 //        PropertyLocation propertyLocation = property.getPropertyLocation();
 //        PropertyOwnerDetails propertyOwnerDetails = property.getPropertyOwnerDetails();
+
 //        propertyRepository.save(property);
 //        propertyInformationRepository.save(propertyInformation);
 //        propertyLocationRepository.save(propertyLocation);
@@ -68,13 +72,17 @@ public class PropertyService implements IProperty {
         }
         propertyDTO.setImages(images);
         Property property = modelMapper.map(propertyDTO, Property.class);
+
         PropertyInformation propertyInformation = property.getPropertyInformation();
         if (propertyInformation != null) {
-            propertyInformation.setProperty(property);         }
+            propertyInformation.setProperty(property);
+        }
+
         PropertyLocation propertyLocation = property.getPropertyLocation();
         if (propertyLocation != null) {
             propertyLocation.setProperty(property);
         }
+
         PropertyOwnerDetails propertyOwnerDetails = property.getPropertyOwnerDetails();
         if (propertyOwnerDetails != null) {
             propertyOwnerDetails.setProperty(property);
