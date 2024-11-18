@@ -6,6 +6,7 @@ import com.spring.jwt.exception.UserAlreadyExistException;
 import com.spring.jwt.Interfaces.UserService;
 import com.spring.jwt.utils.BaseResponseDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AccountController {
 
+    @Autowired
     private final UserService userService;
 
 

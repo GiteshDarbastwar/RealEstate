@@ -1,26 +1,24 @@
 package com.spring.jwt.service;
 
-import com.spring.jwt.dto.*;
+import com.spring.jwt.Interfaces.UserService;
+import com.spring.jwt.dto.RegisterDto;
 import com.spring.jwt.entity.Role;
 import com.spring.jwt.entity.User;
-import com.spring.jwt.exception.*;
+import com.spring.jwt.exception.BaseException;
+import com.spring.jwt.exception.UserAlreadyExistException;
 import com.spring.jwt.repository.RoleRepository;
 import com.spring.jwt.repository.UserRepository;
-import com.spring.jwt.Interfaces.UserService;
 import com.spring.jwt.utils.BaseResponseDTO;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -50,8 +48,6 @@ public class UserServiceImpl implements UserService {
         user.setRoles(roles);
 //        User user = insertUser(registerDto);
 
-        Random random = new Random();
-        Boolean flag = true;
 
 
 

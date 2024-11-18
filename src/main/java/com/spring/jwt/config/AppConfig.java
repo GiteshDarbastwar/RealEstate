@@ -80,13 +80,13 @@ public class AppConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/account/**").permitAll()
 
-                .requestMatchers("/user/form/**").permitAll()
-
-                .requestMatchers("/user/**").permitAll()
+//                .requestMatchers("/user/form/**").permitAll()
+//
+//                .requestMatchers("/user/**").permitAll()
 
                 .requestMatchers("/admin/**").permitAll()
 
-
+                .requestMatchers("/property/**").permitAll()
 
 
                 .and()
