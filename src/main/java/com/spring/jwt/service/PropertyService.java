@@ -70,19 +70,25 @@ public class PropertyService implements IProperty {
     }
 
 
-  @Override
-   public List<PropertyDTO> findFilteredProperties(PropertyStatus propertyStatus, String location, String type, Integer rooms, Integer bathRooms, Integer bedRooms, Double priceRange) {
+    @Override
+    public List<PropertyDTO> findFilteredProperties(PropertyStatus propertyStatus, String location, String type, Integer rooms, Integer bathRooms, Integer bedRooms, Double priceRange) {
         // Fetch filtered properties
         List<Property> properties = propertyRepository.findFilteredProperties(propertyStatus, location, type, rooms, bathRooms, bedRooms, priceRange);
+
+        // Log the number of properties retrieved
+        System.out.println("Number of properties retrieved: " + properties.size());
 
         // Convert Property entities to PropertyDTOs
         List<PropertyDTO> propertyDTOs = new ArrayList<>();
         for (Property property : properties) {
             PropertyDTO propertyDTO = modelMapper.map(property, PropertyDTO.class);
 
+            System.out.println("Inside loop");
+
             if (property.getPropertyImages() != null) {
                 List<String> base64Images = new ArrayList<>();
                 for (byte[] image : property.getPropertyImages()) {
+                    System.out.println("Processing image");
                     if (image != null) {
                         String base64Image = Base64.getEncoder().encodeToString(image);
                         base64Images.add(base64Image);
@@ -91,10 +97,14 @@ public class PropertyService implements IProperty {
                 propertyDTO.setBase64Images(base64Images); // Set Base64 strings to DTO
             }
 
+            // Add the populated propertyDTO to the list
+            propertyDTOs.add(propertyDTO);
         }
 
+        // Log the final size of propertyDTOs
+        System.out.println("Number of PropertyDTOs created: " + propertyDTOs.size());
         return propertyDTOs;
-   }
+    }
 
 //    @Override
 //    public List<PropertyDTO> getAll() {
