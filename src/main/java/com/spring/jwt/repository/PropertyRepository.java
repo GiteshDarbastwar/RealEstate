@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface PropertyRepository extends JpaRepository<Property, UUID> {
@@ -31,4 +32,9 @@ public interface PropertyRepository extends JpaRepository<Property, UUID> {
             @Param("bathRooms") Integer bathRooms,
             @Param("bedRooms") Integer bedRooms,
             @Param("priceRange") Double priceRange);
-    }
+
+
+
+    @Query("SELECT p FROM Property p WHERE p.propertyOwnerDetails.fullName = ?1")
+    Optional<Property> findByFullName(String fullName);
+}

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/property")
@@ -59,9 +60,6 @@ public class PropertyController {
             List<PropertyDTO> propertyDTOList = iproperty.findFilteredProperties(status, location, type, rooms, bathRooms, bedRooms, priceRange);
             Response response = new Response("Properties retrieved successfully", propertyDTOList, false);
             return ResponseEntity.status(HttpStatus.OK).body(response); // Use HttpStatus.OK for successful retrieval
-//        } catch (IllegalArgumentException e) {
-//            Response errorResponse = new Response("Invalid property status provided", e.getMessage(), true);
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         } catch (Exception e) {
             Response errorResponse = new Response("Failed to retrieve properties", e.getMessage(), true);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
@@ -77,6 +75,20 @@ public class PropertyController {
         }catch (Exception e){
             Response errorResponse = new Response("Failed to retrieve properties", e.getMessage(), true);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+        }
+    }
+
+    @PatchMapping("/updateAny")
+    public ResponseEntity<Response> updateAny(@RequestParam UUID productID,
+                                              @RequestParam String fullName,
+                                              @RequestBody PropertyDTO propertyDTO){
+        try{
+            PropertyDTO propertyDTO1 = iproperty.updateAny(productID,fullName,propertyDTO);
+            Response response = new Response("Property Updated Sucessfully",propertyDTO1,false);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        }catch (Exception e){
+            Response errorResponse = new Response("Failed to Update property",e.getMessage(),true);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
     }
 

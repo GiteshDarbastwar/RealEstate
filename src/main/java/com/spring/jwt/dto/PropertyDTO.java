@@ -5,6 +5,7 @@ import com.spring.jwt.entity.PropertyLocation;
 import com.spring.jwt.entity.PropertyOwnerDetails;
 import com.spring.jwt.entity.PropertyStatus;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.UUID;
@@ -23,6 +24,10 @@ public class PropertyDTO {
     private PropertyStatus propertyStatus;
 
     private List<byte []> images;
+
+    // For retrieving images as Base64 strings
+    private List<String> base64Images;
+
     private PropertyInformation propertyInformation;
     private PropertyLocation propertyLocation;
     private PropertyOwnerDetails propertyOwnerDetails;

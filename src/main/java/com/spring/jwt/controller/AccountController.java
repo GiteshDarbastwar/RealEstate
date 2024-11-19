@@ -6,20 +6,16 @@ import com.spring.jwt.exception.UserAlreadyExistException;
 import com.spring.jwt.Interfaces.UserService;
 import com.spring.jwt.utils.BaseResponseDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/account")
 @RequiredArgsConstructor
 public class AccountController {
 
-    @Autowired
     private final UserService userService;
 
 
@@ -27,7 +23,7 @@ public class AccountController {
     public ResponseEntity<BaseResponseDTO> register(@RequestBody RegisterDto registerDto){
 
         try {
-           BaseResponseDTO response= userService.registerAccount(registerDto);
+            BaseResponseDTO response= userService.registerAccount(registerDto);
             return ResponseEntity.status(HttpStatus.OK).body(new BaseResponseDTO("Successful",response.getMessage()));
         }catch (UserAlreadyExistException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new BaseResponseDTO("Unsuccessful","User already exists"));
