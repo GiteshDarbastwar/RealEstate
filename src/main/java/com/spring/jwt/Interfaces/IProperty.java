@@ -10,12 +10,10 @@ import java.util.UUID;
 
 public interface IProperty {
 
-    PropertyDTO saveProperty(PropertyDTO propertyDTO, List<MultipartFile >multipartFiles) throws IOException;
+    PropertyDTO saveProperty(PropertyDTO propertyDTO, List<MultipartFile> multipartFiles) throws IOException;
 
-    List<PropertyDTO> findFilteredProperties(PropertyStatus status, String location, String type, Integer rooms, Integer bathRooms, Integer bedRooms, Double priceRange);
 
     List<PropertyDTO> getAll();
 
 
-    PropertyDTO updateAny(UUID productID, String fullName, PropertyDTO propertyDTO);
 }

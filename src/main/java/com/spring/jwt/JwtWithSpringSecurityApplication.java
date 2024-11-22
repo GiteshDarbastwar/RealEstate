@@ -12,13 +12,13 @@ public class JwtWithSpringSecurityApplication {
 
 		System.out.println("\n\n");
 
-		System.err.println("  *****    *******  *******       *****   *******    *****    ******   *******" );
-		System.err.println(" *     *   *      *    *         *           *      *     *   *     *     *   " );
-		System.err.println("*       *  *      *    *         *           *     *       *  *     *     *   " );
-		System.err.println("*       *  *******     *          *****      *     *       *  ******      *   " );
-		System.err.println("*********  *           *               *     *     *********  *   *       *   " );
-		System.err.println("*       *  *           *               *     *     *       *  *    *      *   " );
-		System.err.println("*       *  *        *******       *****      *     *       *  *     *     *   " );
+		System.out.println("  *****    *******  *******       *****   *******    *****    ******   *******" );
+		System.out.println("*       *  *      *    *         *           *     *       *  *     *     *   " );
+		System.out.println(" *     *   *      *    *         *           *      *     *   *     *     *   " );
+		System.out.println("*       *  *******     *          *****      *     *       *  ******      *   " );
+		System.out.println("*********  *           *               *     *     *********  *   *       *   " );
+		System.out.println("*       *  *           *               *     *     *       *  *    *      *   " );
+		System.out.println("*       *  *        *******       *****      *     *       *  *     *     *   " );
 	}
 
 }

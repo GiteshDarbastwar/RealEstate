@@ -16,21 +16,12 @@ public class PropertyDTO {
 
     private UUID propertyID;
     private String propertyTitle;
-    private String propertyType;
-    private Double propertyPrice;
-    private Float propertyArea;
-    private Integer propertyRooms;
-
-    private PropertyStatus propertyStatus;
 
     private List<byte []> images;
 
-    // For retrieving images as Base64 strings
     private List<String> base64Images;
 
-    private PropertyInformation propertyInformation;
-    private PropertyLocation propertyLocation;
-    private PropertyOwnerDetails propertyOwnerDetails;
+
 
 
 }

@@ -19,9 +19,6 @@ public class PropertyInformation {
     private Integer propertyBathRooms;
     private String propertyOtherFeatures;
 
-    @OneToOne
-    @JoinColumn(name = "propertyID")
-    @JsonBackReference
-    private Property property;
+
 
 }

@@ -18,8 +18,4 @@ public class PropertyLocation {
     private String propertyState;
     private Integer propertyPinCode;
 
-    @OneToOne
-    @JoinColumn(name = "propertyID")
-    @JsonBackReference
-    private Property property;
 }

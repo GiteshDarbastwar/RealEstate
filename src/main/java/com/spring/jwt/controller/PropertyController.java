@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.jwt.Interfaces.IProperty;
 import com.spring.jwt.dto.PropertyDTO;
 import com.spring.jwt.dto.Response;
+import com.spring.jwt.entity.PropertyLocation;
 import com.spring.jwt.entity.PropertyStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,31 +42,9 @@ public class PropertyController {
         }
     }
 
-    @GetMapping("/filter")
-    public ResponseEntity<Response> filter(
-            @RequestParam(required = false) String propertyStatus,
-            @RequestParam(required = false) String location,
-            @RequestParam(required = false) String type,
-            @RequestParam(required = false) Integer rooms,
-            @RequestParam(required = false) Integer bathRooms,
-            @RequestParam(required = false) Integer bedRooms,
-            @RequestParam(required = false) Double priceRange
-    ) {
-        try {
-            PropertyStatus status = null;
-            if (propertyStatus != null) {
-                status = PropertyStatus.valueOf(propertyStatus.toUpperCase());
-            }
 
-            // Pass the enum type to the repository method
-            List<PropertyDTO> propertyDTOList = iproperty.findFilteredProperties(status, location, type, rooms, bathRooms, bedRooms, priceRange);
-            Response response = new Response("Properties retrieved successfully", propertyDTOList, false);
-            return ResponseEntity.status(HttpStatus.OK).body(response); // Use HttpStatus.OK for successful retrieval
-        } catch (Exception e) {
-            Response errorResponse = new Response("Failed to retrieve properties", e.getMessage(), true);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
-        }
-    }
+
+
 
     @GetMapping("/getAll")
     public ResponseEntity<Response> getAll(){
@@ -75,20 +55,6 @@ public class PropertyController {
         }catch (Exception e){
             Response errorResponse = new Response("Failed to retrieve properties", e.getMessage(), true);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
-        }
-    }
-
-    @PatchMapping("/updateAny")
-    public ResponseEntity<Response> updateAny(@RequestParam UUID productID,
-                                              @RequestParam String fullName,
-                                              @RequestBody PropertyDTO propertyDTO){
-        try{
-            PropertyDTO propertyDTO1 = iproperty.updateAny(productID,fullName,propertyDTO);
-            Response response = new Response("Property Updated Sucessfully",propertyDTO1,false);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
-        }catch (Exception e){
-            Response errorResponse = new Response("Failed to Update property",e.getMessage(),true);
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
     }
 

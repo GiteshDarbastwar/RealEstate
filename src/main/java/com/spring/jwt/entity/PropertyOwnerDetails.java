@@ -16,8 +16,5 @@ public class PropertyOwnerDetails {
     private String emailAddress;
     private Long phoneNUmber;
 
-    @OneToOne
-    @JoinColumn(name = "propertyID")
-    @JsonBackReference
-    private Property property;
+
 }
